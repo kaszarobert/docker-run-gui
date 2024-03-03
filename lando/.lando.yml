@@ -1,0 +1,25 @@
+name: guiapp
+
+services:
+
+  guiapp:
+    scanner: false
+    api: 3
+    type: lando
+    services:
+      user: root
+      build: .
+      image: custom/guiapp
+      volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix
+      environment:
+        DISPLAY: ":0"
+      command: 'tail -f /dev/null'
+    volumes:
+      guiapp:
+
+tooling:
+  xcalc:
+    service: guiapp
+
+# https://medium.com/@sahilgulghane22/running-gui-applications-in-docker-containers-9c36c3196a6b

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  gui-app:
+    image: custom/guiapp
+    build:
+      context: .
+    container_name: gui-app
+    network_mode: "host"
+    environment:
+      - DISPLAY=:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
